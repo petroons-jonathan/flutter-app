@@ -24,3 +24,31 @@ Pour plus d'information concertant Flutter et son installation vous pouvez vous 
 
 
 
+Tutoriel Flutter Morpion
+========================
+
+Vous trouverez ici un tutoriel pas à pas pour la réalisation d'une application Flutter. Cette application sera un jeu de morpion classique avec ses neuf boutons, avec une fonction définissant le joueur qui doit jouer et le remplissage de la case choisie. Lorsqu'une case sera choisie par un des deux joueurs nous la désactiverons et créerons une fonction pour définir le gagnant quand toutes les cases seront remplies. En fin d'application nous ajouterons un bouton refresh ainsi qu'un refresh du jeu en cas de match nul. En bonus, nous jouerons contre un ordinateur qui choisira au hasard une case vide lorsque l'on en choisira une nous-même.
+
+Pour se faire nous allons commencer par créer un projet flutter dans notre IDE préféré. Et nous allons commencer par effacer ce qui est dans le fichier main.dart pour le remplacer par la notre :
+
+main.dart
+
+  import 'package:flutter/material.dart';
+import 'home_page.dart';
+
+// need this to run the app 
+void main() => runApp(MyApp());
+
+// the entire application is a widget 
+class MyApp extends StatelessWidget {
+  @override
+  // build widget 
+  Widget build(BuildContext context){
+    return new MaterialApp(
+      theme: ThemeData(primaryColor: Colors.green),
+      home: new HomePage(),
+    );
+  }
+}
+
+
