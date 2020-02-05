@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <h1>Workshop Flutter</h1>
+</header>
+    <div class="jumbo">
+        <div class="content-jumbo block">
+    <p>C'est ici que l'aventure Flutter va commencer mais n'ai pas peur, nous serons là pour te guider.</p>
+    <p>Mais avant ça, comme dans tous bon RPG qui se respecte il va falloir s'équiper. Pour ce faire, nous vous avons laissé un "guide du routard" de l'installation comme on dit dans le jargon.</p>
+    <p>Dans très peu de temps, toi aussi tu joueras avec Flutter !</p>
+</div>
+<div class="content-jumbo">
+    <ul>
+        <li><a href="#">Lien Vers Flutter</a></li>
+        <li><a href="#">Lien vers Github Quentin</a></li>
+        <li><a href="#">Lien vers Github Jonathan</a></li>
+        <li><a href="#">Lien vers repo tuto</a></li>
+    </ul>
+</div>
+    </div>
+
+    <h2>Petit manuel d'installation</h2>
+
+    <div class="container">
+        <!--Windows part-->
+    <button type="button" class="collapsible">Pour Windows</button>
+    <div class="content">
+        <!--Section Installation Windows-->
+        <h3>Pour Windows</h3>
+        <p>Téléchargez la dernière version de flutter pour Windows <a href="https://storage.googleapis.com/flutter_infra/releases/stable/windows/flutter_windows_v1.12.13+hotfix.7-stable.zip">ici</a>.</p>
+        <p>Extraire les fichiers et placez le dossier Flutter à l'emplacement choisi (par ex: <span>C:\src\flutter</span>; ne pas installer Flutter dans un répertoire qui nécessite des privilèges.)</p>
+    
+        <h4>Mettre à jour le PATH</h4>
+        <p>Si vous désirez éxécuter les commandes de Flutter dans le terminal vous devez mettre jour le PATH. Pour ce faire rendez vous dans votre barre de recherche Windows, tapez <span>"env"</span> et choisissez <span>"Edit environment variables for your account"</span>.</p>
+        <p>En dessous de <span>User Variables</span> vous devriez trouver une entrée nommé PATH. Si elle existe vous devez rajouter <span>flutter/bin</span> avec <span>;</span> pour séparer les valeurs. Si elle n'existe pas créez une nouvelle variable nommé PATH avec le chemin complet jusque <span>flutter/bin</span></p>
+        <p>Il est à noter que vous devez fermer et réouvrir le terminal pour que le chemin se mette à jour.</p>
+    
+        <h4>Run <span>flutter doctor</span></h4>
+        <p>Nous allons maintenant pouvoir ouvrir une console dans le répertoire de flutter et taper <span>flutter doctor</span></p>
+        <p>Cette commande sert à vérifier votre environement et retourne le statut de votre installation de Flutter. Vous devriez voir quelque chose comme ceci :</p> <code>[-] Android toolchain - develop for Android devices
+            • Android SDK at D:\Android\sdk
+            ✗ Android SDK is missing command line tools; download from https://goo.gl/XxQghQ
+            • Try re-installing or updating your Android SDK,
+              visit https://flutter.dev/setup/#android-setup for detailed instructions.
+        </code>
+        <p>Comme vous pouvez le voir ici on peut remarquer qu'Android Studio SDK est manquant (vous trouverez tout les éléments manquant à l'installation correcte de Flutter, et nous allons les expliquer les uns après les autres).</p>
+        
+    
+        <h4>Installez Android Studio</h4>
+        <p>Pour commencer vous pouvez télécharger la dernière version d'Android Studio <a href="https://developer.android.com/studio">ici</a>.</p>
+        <p>Lancez Android Studio et aller sur "Android Studi Setup Wizard", cela va installer les dernières versions d'Android SDK, Android SDK Platform-Tools et Android SDK Build-Tools qui sont requis pour les applications Flutter.</p>
+        <p></p>
+        <h4>Mise en place de votre Android Device</h4>
+        <p>Pour préparer et tester votre application Flutter, vous avez besoin d'un appareil avec Android 4.1 (ou plus)</p>
+        <ol>
+            <li>Activez "Developper options" et "USB Debugging" si votre appareil. Pour plus d'information vous pouvez lire la documentation <a href="https://developer.android.com/studio/debug/dev-options">Android</a>.</li>
+            <li>Installez <a href="https://developer.android.com/studio/run/win-usb">Google USB Driver</a>.</li>
+            <li>Branchez votre téléphone par USB à votre ordinateur. Si votre téléphone le demande, autorisé l'ordinateur à accéder à votre appareil.</li>
+            <li>Dans le terminal, tapez <span>flutter devices</span> pour vérifier que votre appareil est bien reconnu par Flutter. </li>
+        </ol>
+    
+        <h4>Installez Android Emulator</h4>
+        <p>Pour préparer et tester votre application Flutter, vous pouvez passer par un émulateur de device.</p>
+        <ol>
+        <li>Activez <a href="https://developer.android.com/studio/run/emulator-acceleration">VM acceleration</a>.</li>
+        <li>Lancez <span>Android Studio > Tools > Android > AVD Manager</span> et selectionnez <span>Create virtual device</span>.</li>
+        <li>Choisissez votre device et cliquez sur <span>Next</span>.</li>
+        <li>Selectionnez une ou plusieurs images pour la version d'Android que vous souhaitez. Une image <span>x86</span> ou <span>x86_64</span> est recommendée.</li>
+        <li>En dessous de <span>Emulated performance</span>, sélectionnez <span>Hardware - GLES 2.0</span> pour activer l'acceleration d'hardware.</li>
+        <li>Vérifiez la configuration AVD et cliquez sur <span>Finish</span></li>
+        <li>Dans Android Virtual Device Manager, cliquez sur <span>Run</span>. L'émulateur se lancera et affichera le canevas par défaut de l'OS choisie.</li>
+        </ol>
+    
+        <h4>Installez les plugins Dart et Flutter</h4>
+        <p>Maintenant que tout a été installé, nous allons devoir installer les plugins Dart et Flutter sur notre IDE.</p>
+        <p>Pour Android Studio</p>
+        <ol>
+            <li>Lancez Android Studio.</li>
+            <li>Ouvrez <span> File > Settings > Plugins</span>.</li>
+            <li>Selecionnez <span>Marketplace</span> et installez le plugin <span>Flutter</span>.</li>
+            <li>Cliquez sur <span>YES</span> pour installer aussi le plugin Dart.</li>
+            <li>Cliquez sur <span>RESTART</span> pour relancer votre IDE.</li>
+        </ol>
+        <p>Pour Visual Studio Code</p>
+        <ol>
+            <li>Lancez VS Code.</li>
+            <li>Appuyez sur <span>CTRL + Maj + P</span> ou cliquez sur <span>View > Command Palette</span>.</li>
+            <li>Tapez <span>Install</span> puis choisissez <span>Extensions: Install Extensions</span>.</li>
+            <li>Tapez <span>Flutter</span> et installez le plugin. Le plugin Dart s'installera automatiquement.</li>
+        </ol>
+    
+        <p>Bravo ! Vous êtes arrivés à la fin de l'installation de flutter ! La prochaine étape sera la création de votre première application que nous verrons ensemble !</p>
+    
+        <p>Pour ceux qui auraient rencontré des problèmes dans l'installation de Flutter, de l'émulateur (ou si comme moi votre ordinateur a décidé de s'envoler à chaque essai), vous pouvez directement coder l'application <a href="https://flutter.dev/">ici</a>.</p>
+        </div>
+
+        <!--Mac/OS part-->
+    <button type="button" class="collapsible">Pour Mac/OS</button>
+    <div class="content">
+        <!--Section Installation Mac/OS-->
+        <h3>Pour Mac/OS</h3>
+        <p>Téléchargez la dernière version de flutter pour Mac/OS <a href="https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_v1.12.13+hotfix.7-stable.zip">ici</a>.</p>
+        <p>Extraire les fichiers et placez le dossier Flutter à l'emplacement choisi.</p>
+    
+        <h4>Mettre à jour le PATH</h4>
+        <p>Si vous désirez éxécuter les commandes de Flutter dans le terminal vous devez mettre jour le PATH. Pour ce faire rendez vous dans votre terminal, tapez <span>$HOME/.bash_profile</span> ou <span>$HOME/.bashrc</span> selon votre version de Mac/OS et mettez à jour le chemin comme ceci :</p> <code> export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"</code>
+        <p>Pour vérifier si le chemin à bien été modifié tapez echo $PATH</p>
+        <p>Il est à noter que vous devez fermer et réouvrir le terminal pour que le chemin se mette à jour.</p>
+    
+        <h4>Run <span>flutter doctor</span></h4>
+        <p>Nous allons maintenant pouvoir ouvrir une console dans le répertoire de flutter et taper <span>flutter doctor</span></p>
+        <p>Cette commande sert à vérifier votre environement et retourne le statut de votre installation de Flutter. Vous devriez voir quelque chose comme ceci :</p> <code>[-] Android toolchain - develop for Android devices
+            • Android SDK at D:\Android\sdk
+            ✗ Android SDK is missing command line tools; download from https://goo.gl/XxQghQ
+            • Try re-installing or updating your Android SDK,
+              visit https://flutter.dev/setup/#android-setup for detailed instructions.
+        </code>
+        <p>Comme vous pouvez le voir ici on peut remarquer qu'Android Studio SDK est manquant (vous trouverez tout les éléments manquant à l'installation correcte de Flutter, et nous allons les expliquer les uns après les autres).</p>
+    
+        <h4>Installez Xcode</h4>
+        <p>Installez la dernière version de Xcode depuis votre Mac App Store ou <a href="https://developer.apple.com/xcode/">ici</a>.</p>
+        <p>Configurez XCode avec la ligne de commande suivante :</p>
+        <code>
+            sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+            </code>
+        </br>
+            <code>
+            sudo xcodebuild -runFirstLaunch
+           </code>
+        
+        <p>Vérifiez si vous avez les licenses signées sinon tapez <span>sudo xcodebuild -license</span></p>
+
+        <h4>Créer votre application</h4>
+        <p>Pour créer une nouvelle application, tapez <span>flutter create my_app</span></p>
+        <p>Quand celle-ci est installée, rentrez dans le répertoire en tapant <span>cd my_app</span></p>
+        <p>Pour lancer votre app tapez <span>flutter run</span></p>
+
+        <h4>Mise en place de le simulateur IOS</h4>
+           <p>Sur votre Mac, trouvez <span>Simulator</span> via le Spotlight ou tapez la commande <span>open -a Simulator</span></p>
+           <p>Assurez-vous que le simulteur utilise la version 64-bit en vérifiant dans le menu <span>Hardware > Device</span>.</p>
+           <p>Sur certains appareil, l'application peut déborder selon la taille de l'écran. Vous pouvez changer ça en allant dans le menu <span>Window > Scale</span></p>
+
+           <h4>Déployer sur un appareil iOS</h4>
+           <p>Installez <span>CocoaPods</span> en tapant la commande <span>sudo gem install cocoapods</span> suivi de <span>pod setup</span></p>
+           <p>Suivez les instructions de XCode</p>
+           <ol>
+               <li>Ouvrez le dossier par défaut dans XCode en tapant <span>open ios/Runner.xcworkspace</span> dans le terminal depuis le répertoir de l'application Flutter.</li>
+               <li>Sélectionnez l'appareil que vous voulez déployer dans le menu déroulant.</li>
+               <li>Cliquez sur <span>Runner</span> dans la barre de navigation latérale</li>
+               <li>Vérifiez que le Development Team est activé. Pour ce faire aller dans <span>General > Signing > Team</span> pour Xcode 10. Dans <span>Signing & Capabilities > Team</span> pour Xcode 11.Lors de votre premier projet, il vous faudra entrer votre ID Apple.</li>
+               <li>La première fois que vous rattacherez votre appareil à votre ordinateur, il faudra lui faire confiance en cliquant sur <span>Trust</span>. Pour ce faire allez dans les options de l'appareil dans <span>General > Device Management</span></li>
+               <li>Si la connexion automatique a échoué, vérifiez que la valeur dans <span>General > Identity > Bundle Identifier</span> est unique.</li>
+               <li>Maintenant tapez <span>flutter run</span> pour lancer votre application.</li>
+           </ol>
+    
+    
+    
+        <h4>Installez Android Studio</h4>
+        <p>Pour commencer vous pouvez télécharger la dernière version d'Android Studio <a href="https://developer.android.com/studio">ici</a>.</p>
+        <p>Lancez Android Studio et aller sur "Android Studi Setup Wizard", cela va installer les dernières versions d'Android SDK, Android SDK Platform-Tools et Android SDK Build-Tools qui sont requis pour les applications Flutter.</p>
+        <p></p>
+        <h4>Mise en place de votre Android Device</h4>
+        <p>Pour préparer et tester votre application Flutter, vous avez besoin d'un appareil avec Android 4.1 (ou plus)</p>
+        <ol>
+            <li>Activez "Developper options" et "USB Debugging" si votre appareil. Pour plus d'information vous pouvez lire la documentation <a href="https://developer.android.com/studio/debug/dev-options">Android</a>.</li>
+            <li>Branchez votre téléphone par USB à votre ordinateur. Si votre téléphone le demand   e, autorisé l'ordinateur à accéder à votre appareil.</li>
+            <li>Dans le terminal, tapez <span>flutter devices</span> pour vérifier que votre appareil est bien reconnu par Flutter. </li>
+        </ol>
+    
+        <h4>Installez Android Emulator</h4>
+        <p>Pour préparer et tester votre application Flutter, vous pouvez passer par un émulateur de device.</p>
+        <ol>
+        <li>Activez <a href="https://developer.android.com/studio/run/emulator-acceleration">VM acceleration</a>.</li>
+        <li>Lancez <span>Android Studio > Tools > Android > AVD Manager</span> et selectionnez <span>Create virtual device</span>.</li>
+        <li>Choisissez votre device et cliquez sur <span>Next</span>.</li>
+        <li>Selectionnez une ou plusieurs images pour la version d'Android que vous souhaitez. Une image <span>x86</span> ou <span>x86_64</span> est recommendée.</li>
+        <li>En dessous de <span>Emulated performance</span>, sélectionnez <span>Hardware - GLES 2.0</span> pour activer l'acceleration d'hardware.</li>
+        <li>Vérifiez la configuration AVD et cliquez sur <span>Finish</span></li>
+        <li>Dans Android Virtual Device Manager, cliquez sur <span>Run</span>. L'émulateur se lancera et affichera le canevas par défaut de l'OS choisie.</li>
+        </ol>
+    
+        <h4>Installez les plugins Dart et Flutter</h4>
+        <p>Maintenant que tout a été installé, nous allons devoir installer les plugins Dart et Flutter sur notre IDE.</p>
+        <p>Pour Android Studio</p>
+        <ol>
+            <li>Lancez Android Studio.</li>
+            <li>Ouvrez <span> File > Settings > Plugins</span>.</li>
+            <li>Selecionnez <span>Marketplace</span> et installez le plugin <span>Flutter</span>.</li>
+            <li>Cliquez sur <span>YES</span> pour installer aussi le plugin Dart.</li>
+            <li>Cliquez sur <span>RESTART</span> pour relancer votre IDE.</li>
+        </ol>
+        <p>Pour Visual Studio Code</p>
+        <ol>
+            <li>Lancez VS Code.</li>
+            <li>Appuyez sur <span>CTRL + Maj + P</span> ou cliquez sur <span>View > Command Palette</span>.</li>
+            <li>Tapez <span>Install</span> puis choisissez <span>Extensions: Install Extensions</span>.</li>
+            <li>Tapez <span>Flutter</span> et installez le plugin. Le plugin Dart s'installera automatiquement.</li>
+        </ol>
+    
+        <p>Bravo ! Vous êtes arrivés à la fin de l'installation de flutter ! La prochaine étape sera la création de votre première application que nous verrons ensemble !</p>
+    
+        <p>Pour ceux qui auraient rencontré des problèmes dans l'installation de Flutter, de l'émulateur (ou si comme moi votre ordinateur a décidé de s'envoler à chaque essai), vous pouvez directement coder l'application <a href="https://flutter.dev/">ici</a>.</p>
+        </div>
+        <!--Linux part-->
+    <button type="button" class="collapsible">Pour Linux</button>
+    <div class="content">
+        <!--Section Installation Windows-->
+        <h3>Pour Linux</h3>
+        <p>Téléchargez la dernière version de flutter pour Linux <a href="https://storage.googleapis.com/flutter_infra/releases/stable/windows/flutter_linux_v1.12.13+hotfix.7-stable.tar.zip">ici</a>.</p>
+       
+    
+        <h4>Mettre à jour le PATH</h4>
+        <p>Si vous désirez éxécuter les commandes de Flutter dans le terminal vous devez mettre jour le PATH. Pour ce faire rendez vous dans votre terminal, tapez <span>nano .bash_profile</span> et mettez à jour le chemin comme ceci :</p> <code> export PATH="$PATH:[PATH_TO_FLUTTER_GIT_DIRECTORY]/flutter/bin"</code>
+        <p>Pour vérifier si le chemin à bien été modifié tapez echo $PATH</p>
+        <p>Il est à noter que vous devez fermer et réouvrir le terminal pour que le chemin se mette à jour ou tapez <span>source $HOME/.bash_profile</span> dans le terminal.</p>
+    
+        <h4>Run <span>flutter doctor</span></h4>
+        <p>Nous allons maintenant pouvoir ouvrir une console et taper <span>flutter doctor</span></p>
+        <p>Cette commande sert à vérifier votre environement et retourne le statut de votre installation de Flutter. Vous devriez voir quelque chose comme ceci :</p> <code>[-] Android toolchain - develop for Android devices
+            • Android SDK at D:\Android\sdk
+            ✗ Android SDK is missing command line tools; download from https://goo.gl/XxQghQ
+            • Try re-installing or updating your Android SDK,
+              visit https://flutter.dev/setup/#android-setup for detailed instructions.
+        </code>
+
+        
+        <p>Comme vous pouvez le voir ici on peut remarquer qu'Android Studio SDK est manquant (vous trouverez tout les éléments manquant à l'installation correcte de Flutter, et nous allons les expliquer les uns après les autres).</p>
+    
+        <h4>Installez Android Studio</h4>
+        <p>Pour commencer vous pouvez télécharger la dernière version d'Android Studio <a href="https://developer.android.com/studio">ici</a>.</p>
+        <p>Lancez Android Studio et aller sur "Android Studi Setup Wizard", cela va installer les dernières versions d'Android SDK, Android SDK Platform-Tools et Android SDK Build-Tools qui sont requis pour les applications Flutter.</p>
+        <p></p>
+        <h4>Mise en place de votre Android Device</h4>
+        <p>Pour préparer et tester votre application Flutter, vous avez besoin d'un appareil avec Android 4.1 (ou plus)</p>
+        <ol>
+            <li>Activez "Developper options" et "USB Debugging" si votre appareil. Pour plus d'information vous pouvez lire la documentation <a href="https://developer.android.com/studio/debug/dev-options">Android</a>.</li>
+            <li>Branchez votre téléphone par USB à votre ordinateur. Si votre téléphone le demande, autorisé l'ordinateur à accéder à votre appareil.</li>
+            <li>Dans le terminal, tapez <span>flutter devices</span> pour vérifier que votre appareil est bien reconnu par Flutter. </li>
+        </ol>
+    
+        <h4>Installez Android Emulator</h4>
+        <p>Pour préparer et tester votre application Flutter, vous pouvez passer par un émulateur de device.</p>
+        <ol>
+        <li>Activez <a href="https://developer.android.com/studio/run/emulator-acceleration">VM acceleration</a>.</li>
+        <li>Lancez <span>Android Studio > Tools > Android > AVD Manager</span> et selectionnez <span>Create virtual device</span>.</li>
+        <li>Choisissez votre device et cliquez sur <span>Next</span>.</li>
+        <li>Selectionnez une ou plusieurs images pour la version d'Android que vous souhaitez. Une image <span>x86</span> ou <span>x86_64</span> est recommendée.</li>
+        <li>En dessous de <span>Emulated performance</span>, sélectionnez <span>Hardware - GLES 2.0</span> pour activer l'acceleration d'hardware.</li>
+        <li>Vérifiez la configuration AVD et cliquez sur <span>Finish</span></li>
+        <li>Dans Android Virtual Device Manager, cliquez sur <span>Run</span>. L'émulateur se lancera et affichera le canevas par défaut de l'OS choisie.</li>
+        </ol>
+    
+        <h4>Installez les plugins Dart et Flutter</h4>
+        <p>Maintenant que tout a été installé, nous allons devoir installer les plugins Dart et Flutter sur notre IDE.</p>
+        <p>Pour Android Studio</p>
+        <ol>
+            <li>Lancez Android Studio.</li>
+            <li>Ouvrez <span> File > Settings > Plugins</span>.</li>
+            <li>Selecionnez <span>Marketplace</span> et installez le plugin <span>Flutter</span>.</li>
+            <li>Cliquez sur <span>YES</span> pour installer aussi le plugin Dart.</li>
+            <li>Cliquez sur <span>RESTART</span> pour relancer votre IDE.</li>
+        </ol>
+        <p>Pour Visual Studio Code</p>
+        <ol>
+            <li>Lancez VS Code.</li>
+            <li>Appuyez sur <span>CTRL + Maj + P</span> ou cliquez sur <span>View > Command Palette</span>.</li>
+            <li>Tapez <span>Install</span> puis choisissez <span>Extensions: Install Extensions</span>.</li>
+            <li>Tapez <span>Flutter</span> et installez le plugin. Le plugin Dart s'installera automatiquement.</li>
+        </ol>
+    
+        <p>Bravo ! Vous êtes arrivés à la fin de l'installation de flutter ! La prochaine étape sera la création de votre première application que nous verrons ensemble !</p>
+    
+        <p>Pour ceux qui auraient rencontré des problèmes dans l'installation de Flutter, de l'émulateur (ou si comme moi votre ordinateur a décidé de s'envoler à chaque essai), vous pouvez directement coder l'application <a href="https://flutter.dev/">ici</a>.</p>
+        </div>
+
+    <div class="construct">
+        <p>Site toujours en construction veuillez nous pardonner pour le désagrément</p>
+    </div>
+</div>
+
+
+
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+body {
+    padding:0;
+    margin:0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    background: #095a9d;
+    color:#696969;
+}
+
+
+.jumbo {
+    display: flex;
+    font-size: 2em;
+    height: 80vh;
+}
+
+.content-jumbo {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    background-color: white;
+}
+
+.block {
+    display: block;
+    padding:50px;
+    font-size: 0.8em;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.3em;
+}
+
+.collapsible {
+    background-color: #095a9d;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 3em;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #1fbcfd;
+    color:#696969;
+  }
+  
+  .container {
+      height: 85vh;
+  }
+  .content {
+    padding: 0 150px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+
+h1, h2 {
+    text-align: center;
+        margin:30px 0 30px 0;
+
+}
+h1 {
+    font-size: 4em;
+    color:#1fbcfd;
+}
+
+h2 {
+    padding-top: 50px;
+    font-size:3em;
+    color: white;
+}
+h4 {
+    text-decoration: underline;
+    color: #095a9d;
+}
+p {
+    text-align: justify;
+    padding:5px;
+}
+
+.construct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:30px;
+    height: 35vh;
+    background-color: #1fbcfd;
+    font-size: 1.2em;
+}
+
+.content li {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 1.3em;
+}
+
+a {
+    text-decoration: none;
+    color: #1fbcfd;
+}
+
+span {
+    color:red;
+}
