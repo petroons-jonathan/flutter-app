@@ -31,9 +31,12 @@ Vous trouverez ici un tutoriel pas à pas pour la réalisation d'une application
 
 Pour se faire nous allons commencer par créer un projet flutter dans notre IDE préféré. Et nous allons commencer par effacer ce qui est dans le fichier main.dart pour le remplacer par la notre :
 
-main.dart
+dans ce fichier nous allons d'abord commencer par faire un import du package material.dart voici le code à rajouter au début du fichier main.dart :
 
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+
+-- 
+import 'package:flutter/material.dart';
 import 'home_page.dart';
 
 // need this to run the app 
@@ -50,5 +53,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+--
 
 
