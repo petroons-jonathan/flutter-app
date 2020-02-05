@@ -34,8 +34,7 @@ Pour se faire nous allons commencer par créer un projet flutter dans notre IDE 
 dans ce fichier nous allons d'abord commencer par faire un import du package material.dart voici le code à rajouter au début du fichier main.dart :
 
 import 'package:flutter/material.dart';
-
--- 
+````
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 
@@ -53,6 +52,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
---
+´´´´
 
 
