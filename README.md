@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
 ```
 Nous créons d'abord un StatefulWidget qui va créer l'état de l'application ensuite nous créons une classe qui sera une extension qui nous serira de layout. Nous utiliserons Scaffold, puis lui mettons une app bar avec un titre et enfin on lui donnera un body avec un simple container. A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
 
-              ![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-1.png)
+![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-1.png)
 
 Si ce n'est pas le cas, comparez votre code avec la première partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-1)
 
@@ -112,7 +112,63 @@ class GameButton {
 Nous aurons besoin que le bouton ait une id, un texte qui servira au remplissage, un background color de base qui changera selon la prise du joueur et en dernier savoir si le bouton est disponible ou pas.
 
 Retournons maintenant dans notre fichier home_page.dart où nous pouvons importer le fichier game_button.dart.
-Nous allons ensuite dans le top de la class `_HomePageState` pour y créer la liste de boutons et les initier par une fonction. Nous allons donc 
-```
+Nous allons ensuite dans le top de la class `_HomePageState` pour y créer la liste de boutons et les initier par une fonction.
 
 ```
+  //create list
+  List<GameButton> buttonsList;
+
+  @override
+  void initState() {
+    super.initState();
+    buttonsList = doInit();
+  }
+
+  List<GameButton> doInit() {
+    var gamebuttons = <GameButton>[
+      // give 9 piece for the game
+      new GameButton(id: 1),
+      new GameButton(id: 2),
+      new GameButton(id: 3),
+      new GameButton(id: 4),
+      new GameButton(id: 5),
+      new GameButton(id: 6),
+      new GameButton(id: 7),
+      new GameButton(id: 8),
+      new GameButton(id: 9),
+    ];
+    return gamebuttons;
+  }
+```
+Maintenant que nous avons défini le nombre de bouton et leur état d'origine nous allons pouvoir retourner dans notre Widget Scaffold et changer le body par un système de grille, la grille aura un padding de 10 et nous controlerons le nombre de bouton par ligne (le morpion se jouant sur un plateau de 3x3) en créant le nombre de bouton qu'il y a dand la list buttonsList. Nous créerons des boîtes grâce à la fonction SizedBox et y placeront le bouton de jeu (RaisedButton) puis imbriquer dans celle-ci (souvenez-vous les widgets dans les widgets en mode poupée russe) un widget texte qui servira à remplir la boîte.
+
+```
+        body: new GridView.builder(
+          padding: const EdgeInsets.all(10.0),
+          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              childAspectRatio: 1.0,
+              crossAxisSpacing: 20.0,
+              mainAxisSpacing: 20.0),
+          itemCount: buttonsList.length,
+          itemBuilder: (context, i) => new SizedBox(
+            width: 100.0,
+            height: 100.0,
+            child: new RaisedButton(
+              padding: const EdgeInsets.all(8.0),
+              onPressed: null,
+              child: new Text(
+                buttonsList[i].text,
+                style: new TextStyle(color: Colors.white, fontSize: 20.0),
+              ),
+              color: buttonsList[i].bg,
+              disabledColor: buttonsList[i].bg,
+            ),
+          ),
+        )
+```
+ A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
+
+![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-2.png)
+
+Si ce n'est pas le cas, comparez votre code avec la première partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-2)
