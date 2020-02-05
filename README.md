@@ -78,6 +78,6 @@ class _HomePageState extends State<HomePage> {
 ```
 Nous créons d'abord un StatefulWidget qui va créer l'état de l'application ensuite nous créons une classe qui sera une extension qui nous serira de layout. Nous utiliserons Scaffold, puis lui mettons une app bar avec un titre et enfin on lui donnera un body avec un simple container. A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
 
-![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-final.png)
+![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-1.png)
 
 Si ce n'est pas le cas, comparez votre code avec la première partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-1)
