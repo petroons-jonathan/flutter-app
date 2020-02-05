@@ -27,6 +27,9 @@ Pour plus d'information concertant Flutter et son installation vous pouvez vous 
 Tutoriel Flutter Morpion
 ========================
 
+Partie 1
+--------
+
 Vous trouverez ici un tutoriel pas à pas pour la réalisation d'une application Flutter. Cette application sera un jeu de morpion classique avec ses neuf boutons, avec une fonction définissant le joueur qui doit jouer et le remplissage de la case choisie. Lorsqu'une case sera choisie par un des deux joueurs nous la désactiverons et créerons une fonction pour définir le gagnant quand toutes les cases seront remplies. En fin d'application nous ajouterons un bouton refresh ainsi qu'un refresh du jeu en cas de match nul. En bonus, nous jouerons contre un ordinateur qui choisira au hasard une case vide lorsque l'on en choisira une nous-même.
 
 Pour se faire nous allons commencer par créer un projet flutter dans notre IDE préféré. Et nous allons commencer par effacer ce qui est dans le fichier main.dart pour le remplacer par la notre :
@@ -78,6 +81,38 @@ class _HomePageState extends State<HomePage> {
 ```
 Nous créons d'abord un StatefulWidget qui va créer l'état de l'application ensuite nous créons une classe qui sera une extension qui nous serira de layout. Nous utiliserons Scaffold, puis lui mettons une app bar avec un titre et enfin on lui donnera un body avec un simple container. A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
 
-![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-1.png)
+              ![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-1.png)
 
 Si ce n'est pas le cas, comparez votre code avec la première partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-1)
+
+Partie 2
+--------
+Maintenant que nous avons notre début d'application, nous allons nous poser la question de ce qu'il nous faut en premier dans le jeu du morpion et ce sont les 9 cases à remplir pour jouer. Il faut que ses cases puissent être rempli c'est pourquoi nous partirons du principe que ce sont des boutons. 
+Nous allons donc d'ores et déjà créer un nouveau fichier nommé game_button.dart toujours dans le même répertoire et toujours en lui important material dart. 
+Dans ce fichier nous allons créer la class GameButton et lui paramêtrer ce dont nous aurons besoin pour la suite.
+```
+class GameButton {
+  //give an id to the button 
+  final id;
+  // give the "x" or "O" 
+  String text;
+  // color of background 
+  Color bg;
+  // say if the button is already clicked
+  bool enabled; 
+  // GameButton class
+  GameButton({
+    this.id,
+    this.text="",
+    this.bg= Colors.grey,
+    this.enabled = true,
+  });
+}
+```
+Nous aurons besoin que le bouton ait une id, un texte qui servira au remplissage, un background color de base qui changera selon la prise du joueur et en dernier savoir si le bouton est disponible ou pas.
+
+Retournons maintenant dans notre fichier home_page.dart où nous pouvons importer le fichier game_button.dart.
+Nous allons ensuite dans le top de la class `_HomePageState` pour y créer la liste de boutons et les initier par une fonction. Nous allons donc 
+```
+
+```
