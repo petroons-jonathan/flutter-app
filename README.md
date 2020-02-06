@@ -171,4 +171,203 @@ Maintenant que nous avons défini le nombre de bouton et leur état d'origine no
 
 ![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-2.png)
 
-Si ce n'est pas le cas, comparez votre code avec la première partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-2)
+Si ce n'est pas le cas, comparez votre code avec la deuxième partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-2)
+
+Partie 3
+--------
+Maintenant que nous avons nos boutons, nous devrions un peu penser au jeu. Nous avons deux joueurs, qui joue l'un après l'autre en remplissant des cases et celui dont les trois cases verticales, horizontales ou diagonales gagne. Nous allons donc créer les variables que nous avons besoin (par soucis de clarté nous les placerons juste en dessous la `List<GameButton> buttonsList;` et nous aurons donc `var player1;` `var player2;` `var activePlayer;`
+Et nous pouvons créer l'état de base qui sera :
+```
+void playGame(GameButton gb){
+  // give a state to the game
+  setState(() {
+    if(activePlayer == 1){
+      gb.text = "Be";
+      gb.bg = Colors.blue;
+      activePlayer = 2;
+      // get id for winner function
+      player1.add(gb.id);
+    } else {
+      gb.text = "Code";
+      gb.bg = Colors.black;
+      activePlayer = 1;
+      // get id for winner function
+      player2.add(gb.id);
+    }
+    gb.enabled = false;
+    checkWinner();
+  });
+}
+```
+Nous allons utiliser une annotation rapide pour le GameButton et indiquons la fonction checkWinner que nous allons créer maintenant et qui sera la plus longue car elle va reprendre toutes les possibilités du jeu !
+Nous aurons donc une structure qui s'articulera de cette manière :
+```
+  void checkWinner(){
+        var winner = -1;
+    if (player1.contains(1) && player1.contains(2) && player1.contains(3)) {
+      winner = 1;
+    }
+    if (player2.contains(1) && player2.contains(2) && player2.contains(3)) {
+      winner = 2;
+    }
+   }
+```
+Maintenant si nous reprenons notre jeu du morpion on peut gagner donc avec le groupement 1,2,3 puis 4,5,6 et ainsi de suite. Tout en pensant aux diagonales et vertciales ! Si vous avez décidez de tout taper vous même bravo ! sinon voici la liste :
+```
+void playGame(GameButton gb){
+  // give a state to the game
+  setState(() {
+    if(activePlayer == 1){
+      gb.text = "Be";
+      gb.bg = Colors.blue;
+      activePlayer = 2;
+      // get id for winner function
+      player1.add(gb.id);
+    } else {
+      gb.text = "Code";
+      gb.bg = Colors.black;
+      activePlayer = 1;
+      // get id for winner function
+      player2.add(gb.id);
+    }
+    gb.enabled = false;
+    checkWinner();
+  });
+}
+
+// create the function for the winner 
+  int checkWinner(){
+        var winner = -1;
+    if (player1.contains(1) && player1.contains(2) && player1.contains(3)) {
+      winner = 1;
+    }
+    if (player2.contains(1) && player2.contains(2) && player2.contains(3)) {
+      winner = 2;
+    }
+
+    // row 2
+    if (player1.contains(4) && player1.contains(5) && player1.contains(6)) {
+      winner = 1;
+    }
+    if (player2.contains(4) && player2.contains(5) && player2.contains(6)) {
+      winner = 2;
+    }
+
+    // row 3
+    if (player1.contains(7) && player1.contains(8) && player1.contains(9)) {
+      winner = 1;
+    }
+    if (player2.contains(7) && player2.contains(8) && player2.contains(9)) {
+      winner = 2;
+    }
+
+    // col 1
+    if (player1.contains(1) && player1.contains(4) && player1.contains(7)) {
+      winner = 1;
+    }
+    if (player2.contains(1) && player2.contains(4) && player2.contains(7)) {
+      winner = 2;
+    }
+
+    // col 2
+    if (player1.contains(2) && player1.contains(5) && player1.contains(8)) {
+      winner = 1;
+    }
+    if (player2.contains(2) && player2.contains(5) && player2.contains(8)) {
+      winner = 2;
+    }
+
+    // col 3
+    if (player1.contains(3) && player1.contains(6) && player1.contains(9)) {
+      winner = 1;
+    }
+    if (player2.contains(3) && player2.contains(6) && player2.contains(9)) {
+      winner = 2;
+    }
+
+    //diagonal
+    if (player1.contains(1) && player1.contains(5) && player1.contains(9)) {
+      winner = 1;
+    }
+    if (player2.contains(1) && player2.contains(5) && player2.contains(9)) {
+      winner = 2;
+    }
+
+    if (player1.contains(3) && player1.contains(5) && player1.contains(7)) {
+      winner = 1;
+    }
+    if (player2.contains(3) && player2.contains(5) && player2.contains(7)) {
+      winner = 2;
+    }
+
+    if(winner != -1){
+      if(winner == 1){
+
+        );
+      } else {
+
+        );
+      }
+    }
+    return winner;
+  }
+```
+Nous avons délibérément laisser les champs vides car nous avons l'idée de créer une bôite de dialogue lorsque la victoire d'un des joueurs sera acquise ! pour cela nous allons créer un autre composant qui sera appelé. Pour ce faire créons un fichier nommé custom_dialog.dart, même rengaine quand il s'agit d'importer material et là nous allons créer notre class de dialog avec en supplément l'actien de refresh la partie :
+```
+class CustomDialog extends StatelessWidget {
+  final title;
+  final content;
+  final VoidCallback callback;
+  final actionText;
+
+  CustomDialog(this.title,this.content,this.callback,[this.actionText="Reset"]);
+  @override
+  Widget build(BuildContext context){
+    return new AlertDialog(
+      title: new Text(title),
+      content: new Text(content),
+      actions: <Widget>[
+        new FlatButton(
+          onPressed:callback,
+          color: Colors.white,
+          child: new Text(actionText),
+        ),
+      ],
+    );
+  }
+}
+```
+Retour dans le fichier home_page.dart auquel nous ajoutons notre nouvelle création :
+```
+    if(winner != -1){
+      if(winner == 1){
+        showDialog(
+          context: context,
+          builder:(_)=> new CustomDialog("Player 1 Won", "Press the reset button to start again.", resetGame)
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder:(_)=> new CustomDialog("Player 2 Won", "Press the reset button to start again.", resetGame)
+        );
+      }
+    }
+```
+Vous devriez voir une erreur sur le CustomDialog, si vous êtes dans VS Code cliquez dessus, cliquez sur l'ampoule et fait "import custom_dialog.dart". Sinon rajoutez le à la main dans le dessus du fichier home_page.dart. Maintenant que nous avons la boîte de dialogue il nous manque la fonction resetGame pour relancer le jeu. 
+Nous pouvons la construire comme suit :
+```
+void resetGame(){
+  if(Navigator.canPop(context)) Navigator.pop(context);
+  setState(() {
+    buttonsList = doInit();
+  });
+}
+```
+Dernière petite modification, retour dans votre GriedView dans le RaisedButton nous devons changer la valeur de onPressed :
+```
+onPressed: buttonsList[i].enabled?()=>playGame(buttonsList[i]):null,
+```
+ A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
+![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-3.png)
+
+Si ce n'est pas le cas, comparez votre code avec la deuxième partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-3)
