@@ -371,7 +371,7 @@ A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
  
 ![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-3.png)
 
-Si ce n'est pas le cas, comparez votre code avec la deuxième partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-3)
+Si ce n'est pas le cas, comparez votre code avec la troisième partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-3)
 
 Partie final
 ------------
@@ -452,7 +452,7 @@ A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
  
 ![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-final.png)
 
-Si ce n'est pas le cas, comparez votre code avec la deuxième partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-final)
+Si ce n'est pas le cas, comparez votre code avec la dernière partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-final)
 
 Bonus Part
 ----------
