@@ -367,7 +367,93 @@ Dernière petite modification, retour dans votre GriedView dans le RaisedButton 
 ```
 onPressed: buttonsList[i].enabled?()=>playGame(buttonsList[i]):null,
 ```
- A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
+A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
+ 
 ![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-3.png)
 
 Si ce n'est pas le cas, comparez votre code avec la deuxième partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-3)
+
+Partie final
+------------
+A ce stade nous avons un jeu de morpion qui se fini lorsqu'un joueur gagne, et de là on peut reset le jeu et recommencer. Pour bien faire il faudrait pouvoir faire refresh le jeu lorsqu'un match nul est le résultat de la partie et rajouter un bouton refresh en bas de l'application pour recommencer la partie à n'importe quel stade du jeu. 
+Nous allons donc passer la fonction void checkWinner en int checkWinner pour récupérer un chiffre qui sera utilisé pour la vérification du match nul. Ensuite nous créons la boîte de dialogue en cas de match nul:
+```
+      int winner = checkWinner();
+      if (winner == -1) {
+        // if every button is blank game is tie 
+        if (buttonsList.every((p) => p.text != "")) {
+          showDialog(
+              context: context,
+              builder: (_) => new CustomDialog(
+                  "Match Nul !", "Appuyez sur reset", resetGame));
+        }
+      }
+```
+Et c'est maintenant que les choses se corse lorsqu'on va créer le bouton refresh en bas de l'application. Grâce a Vs Code il est très facile de wrap un widget dans un autre widget mais c'est assez technique. Pour résumer nous allons cliquer sur notre widget GridView et sur l'ampoule nous allons wrap une première fois et nommé ce Widget parent Column. Auquel on donner un mainaxisalignement ainsi qu'un crossaxis dans cette colonne nous allons créons un widget Children qui contiendra un widget Expand (retour sur gridview pour wrap a nouveau) qui contiendra la grille puis un Widget RaisedButton composé d'un text et de la fonction reset en onPressed.
+Voici le résultat final après emboitage et emboitage:
+```
+  @override
+  Widget build(BuildContext context) {
+    // create structure (scaffold = échafaudage)
+    return new Scaffold(
+        // create application bar
+        appBar: new AppBar(
+          // create a title
+          title: new Text("Morpion"),
+        ),
+        body: new Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            new Expanded(
+              child: new GridView.builder(
+                padding: const EdgeInsets.all(10.0),
+                gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    childAspectRatio: 1.0,
+                    crossAxisSpacing: 20.0,
+                    mainAxisSpacing: 20.0),
+                itemCount: buttonsList.length,
+                itemBuilder: (context, i) => new SizedBox(
+                  width: 100.0,
+                  height: 100.0,
+                  child: new RaisedButton(
+                    padding: const EdgeInsets.all(8.0),
+                    //say that if the button list is enabled then run the function
+                    onPressed: buttonsList[i].enabled
+                        ? () => playGame(buttonsList[i])
+                        : null,
+                    child: new Text(
+                      buttonsList[i].text,
+                      style: new TextStyle(color: Colors.white, fontSize: 20.0),
+                    ),
+                    color: buttonsList[i].bg,
+                    disabledColor: buttonsList[i].bg,
+                  ),
+                ),
+              ),
+            ),
+            new RaisedButton(
+              child: new Text(
+                "Reset",
+                style: new TextStyle(color: Colors.white, fontSize: 20.0),
+              ),
+              color: Colors.red,
+              padding: const EdgeInsets.all(20.0),
+              onPressed: resetGame,
+            )
+          ],
+        ));
+  }
+}
+```
+Voilà ! nous arrivons à la fin de ce tutoriel sur Flutter ! 
+A ce stade-ci vous devriez vous retrouver avec quelque chose comme ceci :
+ 
+![application-final](https://raw.githubusercontent.com/petroons-jonathan/flutter-app/master/app-final.png)
+
+Si ce n'est pas le cas, comparez votre code avec la deuxième partie de ce tuto [ici](https://github.com/petroons-jonathan/flutter-app/tree/master/Step-by-step/step-final)
+
+Bonus Part
+----------
+Dans le fichier home_page.dart du dossier step-final vous trouverez du code en commentaire. En l'activant, vous jouerez contre un ordinateur qui remplira une case vide au hasard si il y en a une lorsque vous cliquerez. Amusez-vous bien !
