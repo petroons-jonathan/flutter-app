@@ -214,27 +214,6 @@ Nous aurons donc une structure qui s'articulera de cette manière :
 ```
 Maintenant si nous reprenons notre jeu du morpion on peut gagner donc avec le groupement 1,2,3 puis 4,5,6 et ainsi de suite. Tout en pensant aux diagonales et vertciales ! Si vous avez décidez de tout taper vous même bravo ! sinon voici la liste :
 ```
-void playGame(GameButton gb){
-  // give a state to the game
-  setState(() {
-    if(activePlayer == 1){
-      gb.text = "Be";
-      gb.bg = Colors.blue;
-      activePlayer = 2;
-      // get id for winner function
-      player1.add(gb.id);
-    } else {
-      gb.text = "Code";
-      gb.bg = Colors.black;
-      activePlayer = 1;
-      // get id for winner function
-      player2.add(gb.id);
-    }
-    gb.enabled = false;
-    checkWinner();
-  });
-}
-
 // create the function for the winner 
   int checkWinner(){
         var winner = -1;
